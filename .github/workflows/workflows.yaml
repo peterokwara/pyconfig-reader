@@ -17,7 +17,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install pipenv
+          sudo apt-get install pandoc
+          python -m pip install pipenv
           python -m pip install --upgrade pip
           python -m pip install tox tox-gh-actions
       - name: Test with tox
