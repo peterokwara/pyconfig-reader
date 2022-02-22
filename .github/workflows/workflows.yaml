@@ -14,8 +14,9 @@ jobs:
         uses: VaultVulp/action-pipenv@v2.0.1
 
       - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
+        run: pip install -r requirements.txt
 
       - name: Run coverage
-        run: coverage run -p --source=. --omit=*tests/* --omit=*/setup.py --omit=.tox* -m unittest discover -s tests/
+        run: |
+          chsh -s /bin/bash
+          coverage run -p --source=. --omit=*tests/* --omit=*/setup.py --omit=.tox* -m unittest discover -s tests/
