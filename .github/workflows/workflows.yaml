@@ -1,0 +1,19 @@
+name: Run Test
+on: push
+
+jobs:
+  ci:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.7
+
+      - name: Install dependencies
+        uses: VaultVulp/action-pipenv@v2.0.1
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run coverage
+        run: coverage run -p --source=. --omit=*tests/* --omit=*/setup.py --omit=.tox* -m unittest discover -s tests/
